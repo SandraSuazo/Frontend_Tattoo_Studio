@@ -5,6 +5,7 @@ export const Home = () => {
   return (
     <div style={{ width: "100%" }}>
       <Typography
+        sx={{ my: 2 }}
         variant="h2"
         style={{
           color: "#ad9859",

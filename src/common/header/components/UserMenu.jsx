@@ -69,15 +69,15 @@ export const UserMenu = ({ token, userRole }) => {
         {token ? (
           <Box>
             <MenuItem onClick={() => handleNavigate("/profile")}>
-              <Typography textAlign="center">Profile</Typography>
+              <Typography textAlign="center">Perfil</Typography>
             </MenuItem>
             <MenuItem onClick={handleLogout}>
               <Typography textAlign="center">Logout</Typography>
             </MenuItem>
           </Box>
         ) : (
-          <MenuItem onClick={() => handleNavigate("/auth")}>
-            <Typography textAlign="center">Auth</Typography>
+          <MenuItem onClick={() => handleNavigate("/login")}>
+            <Typography textAlign="center">Login</Typography>
           </MenuItem>
         )}
       </Menu>

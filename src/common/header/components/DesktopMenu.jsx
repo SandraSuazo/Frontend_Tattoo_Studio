@@ -9,14 +9,14 @@ export const DesktopMenu = ({ token, handleNavigate }) => {
           onClick={() => handleNavigate("/appointments")}
           sx={{ my: 2, color: "white", display: "block" }}
         >
-          Appointments
+          Citas
         </Button>
       )}
       <Button
-        onClick={() => handleNavigate("/about")}
+        onClick={() => handleNavigate("/tattooArtists")}
         sx={{ my: 2, color: "white", display: "block" }}
       >
-        About
+        Tatuadores
       </Button>
     </Box>
   );

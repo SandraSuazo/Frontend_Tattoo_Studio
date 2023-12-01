@@ -41,11 +41,11 @@ export const MobileMenu = ({
       >
         {token && (
           <MenuItem onClick={() => handleNavigate("/appointments")}>
-            <Typography textAlign="center">Appointments</Typography>
+            <Typography textAlign="center">Citas</Typography>
           </MenuItem>
         )}
-        <MenuItem onClick={() => handleNavigate("/about")}>
-          <Typography textAlign="center">About</Typography>
+        <MenuItem onClick={() => handleNavigate("/tattooArtists")}>
+          <Typography textAlign="center">Tatuadores</Typography>
         </MenuItem>
       </Menu>
     </Box>

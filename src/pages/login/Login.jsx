@@ -5,34 +5,22 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setToken, setUser } from "../../core/userSlice";
-import { RegisterForm } from "./components/RegisterForm";
-import { loginUser, registerUser } from "../../services/apiCalls";
-import { handleNavigate } from "../../common/handleNavigate";
+import { LoginForm } from "./components/LoginForm.jsx";
+import { loginUser } from "../../services/apiCalls.js";
+import { setToken, setUser } from "../../core/userSlice.js";
+import { handleNavigate } from "../../common/handleNavigate.js";
 
-export const Register = () => {
+export const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = {
-      name: e.target.firstName.value,
-      surname: e.target.lastName.value,
-      phone: e.target.phone.value,
       email: e.target.email.value,
       password: e.target.password.value,
     };
-    await handleUserRegister(user);
-  };
-
-  const handleUserRegister = async (user) => {
-    try {
-      await registerUser(user);
-      await handleUserLogin(user);
-    } catch (error) {
-      console.error(error);
-    }
+    await handleUserLogin(user);
   };
 
   const handleUserLogin = async (user) => {
@@ -64,10 +52,10 @@ export const Register = () => {
             color: "#ad9859",
           }}
         >
-          Registrarse
+          Login
         </Typography>
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
-          <RegisterForm />
+          <LoginForm />
           <Button
             type="submit"
             fullWidth
@@ -78,8 +66,8 @@ export const Register = () => {
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Button onClick={() => handleNavigate(navigate, "/login")}>
-                ¿Ya tienes una cuenta? Inicia sesión{" "}
+              <Button onClick={() => handleNavigate(navigate, "/register")}>
+                ¿No tienes una cuenta? Regístrate
               </Button>
             </Grid>
           </Grid>

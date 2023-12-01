@@ -1,7 +1,8 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Home } from "../src/pages/home/Home.jsx";
-import { About } from "../src/pages/about/About.jsx";
-import { Auth } from "../src/pages/auth/Auth.jsx";
+import { TattooArtists } from "./pages/tattooArtists/TattooArtists.jsx";
+import { Login } from "../src/pages/login/Login.jsx";
+import { Register } from "./pages/register/Register.jsx";
 import { Profile } from "../src/pages/profile/Profile.jsx";
 import { Appointments } from "../src/pages/appointments/Appointments.jsx";
 import { Admin } from "../src/pages/admin/Admin.jsx";
@@ -15,8 +16,9 @@ const App = () => {
         <Routes>
           <Route path="*" element={<Navigate to="/" />} />
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/auth" element={<Auth />} />
+          <Route path="/tattooArtists" element={<TattooArtists />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/appointments" element={<Appointments />} />
           <Route path="/admin" element={<Admin />} />
