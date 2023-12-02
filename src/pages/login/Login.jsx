@@ -12,7 +12,7 @@ import { setToken, setUser } from "../../core/userSlice.js";
 import { handleNavigate } from "../../common/handleNavigate.js";
 
 export const Login = () => {
-  const notify = (message) => toast(message);
+  const notify = (message) => toast.error(message);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

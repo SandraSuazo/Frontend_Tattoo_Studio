@@ -12,7 +12,7 @@ import { loginUser, registerUser } from "../../services/apiCalls";
 import { handleNavigate } from "../../common/handleNavigate";
 
 export const Register = () => {
-  const notify = (message) => toast(message);
+  const notify = (message) => toast.error(message);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
