@@ -5,16 +5,22 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setToken, setUser } from "../../core/userSlice";
 import { RegisterForm } from "./components/RegisterForm";
-import { loginUser, registerUser } from "../../services/apiCalls";
+import { registerUser } from "../../services/apiCalls";
 import { handleNavigate } from "../../common/handleNavigate";
 
 export const Register = () => {
   const notify = (message) => toast.error(message);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
+  const handleUserRegister = async (user) => {
+    try {
+      await registerUser(user);
+      handleNavigate(navigate, "/login");
+    } catch (error) {
+      notify(`${error.response.status}: ${error.response.data}`);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,27 +32,6 @@ export const Register = () => {
       password: e.target.password.value,
     };
     await handleUserRegister(user);
-  };
-
-  const handleUserRegister = async (user) => {
-    try {
-      await registerUser(user);
-      await handleUserLogin(user);
-    } catch (error) {
-      notify(`${error.response.status}: ${error.response.data}`);
-    }
-  };
-
-  const handleUserLogin = async (user) => {
-    try {
-      await loginUser(user).then(({ data }) => {
-        dispatch(setUser(data.user));
-        dispatch(setToken(data.token));
-        handleNavigate(navigate, "/");
-      });
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (

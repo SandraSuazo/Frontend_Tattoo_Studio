@@ -16,15 +16,6 @@ export const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const user = {
-      email: e.target.email.value,
-      password: e.target.password.value,
-    };
-    await handleUserLogin(user);
-  };
-
   const handleUserLogin = async (user) => {
     try {
       await loginUser(user).then(({ data }) => {
@@ -35,6 +26,15 @@ export const Login = () => {
     } catch (error) {
       notify(`${error.response.status}: ${error.response.data}`);
     }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const user = {
+      email: e.target.email.value,
+      password: e.target.password.value,
+    };
+    await handleUserLogin(user);
   };
 
   return (
