@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { LoginForm } from "./components/LoginForm.jsx";
@@ -11,6 +12,7 @@ import { setToken, setUser } from "../../core/userSlice.js";
 import { handleNavigate } from "../../common/handleNavigate.js";
 
 export const Login = () => {
+  const notify = (message) => toast(message);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -31,7 +33,7 @@ export const Login = () => {
         handleNavigate(navigate, "/");
       });
     } catch (error) {
-      console.error(error);
+      notify(`${error.response.status}: ${error.response.data}`);
     }
   };
 
@@ -39,22 +41,21 @@ export const Login = () => {
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
-          marginTop: 8,
+          marginTop: 12,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
         <Typography
-          component="h1"
-          variant="h5"
+          variant="h4"
           style={{
             color: "#ad9859",
           }}
         >
           Login
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
+        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <LoginForm />
           <Button
             type="submit"

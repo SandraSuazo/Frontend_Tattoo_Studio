@@ -1,9 +1,9 @@
-import { Divider, Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 import { Carousel } from "./components/CarouselHome.jsx";
 
 export const Home = () => {
   return (
-    <div style={{ width: "100%" }}>
+    <Box style={{ width: "100%" }}>
       <Typography
         sx={{ my: 2 }}
         variant="h2"
@@ -16,6 +16,6 @@ export const Home = () => {
       </Typography>
       <Carousel />
       <Divider sx={{ my: 2 }} />
-    </div>
+    </Box>
   );
 };

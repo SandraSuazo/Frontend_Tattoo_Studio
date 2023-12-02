@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setToken, setUser } from "../../core/userSlice";
@@ -11,6 +12,7 @@ import { loginUser, registerUser } from "../../services/apiCalls";
 import { handleNavigate } from "../../common/handleNavigate";
 
 export const Register = () => {
+  const notify = (message) => toast(message);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -31,7 +33,7 @@ export const Register = () => {
       await registerUser(user);
       await handleUserLogin(user);
     } catch (error) {
-      console.error(error);
+      notify(`${error.response.status}: ${error.response.data}`);
     }
   };
 
@@ -43,7 +45,7 @@ export const Register = () => {
         handleNavigate(navigate, "/");
       });
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
@@ -51,22 +53,21 @@ export const Register = () => {
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
-          marginTop: 8,
+          marginTop: 10,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
         <Typography
-          component="h1"
-          variant="h5"
+          variant="h4"
           style={{
             color: "#ad9859",
           }}
         >
           Registrarse
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
+        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <RegisterForm />
           <Button
             type="submit"
@@ -79,7 +80,7 @@ export const Register = () => {
           <Grid container justifyContent="flex-end">
             <Grid item>
               <Button onClick={() => handleNavigate(navigate, "/login")}>
-                ¿Ya tienes una cuenta? Inicia sesión{" "}
+                ¿Ya tienes una cuenta? Inicia sesión
               </Button>
             </Grid>
           </Grid>
