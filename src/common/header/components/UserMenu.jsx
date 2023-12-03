@@ -14,26 +14,26 @@ import { cleanUser } from "../../../core/userSlice.js";
 
 export const UserMenu = ({ token, userRole }) => {
   const navigate = useNavigate();
-  const [anchorUser, setAnchorUser] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
   const dispatch = useDispatch();
 
   const handleOpenUserMenu = (e) => {
-    setAnchorUser(e.currentTarget);
+    setAnchorElUser(e.currentTarget);
   };
 
   const handleCloseUserMenu = () => {
-    setAnchorUser(null);
+    setAnchorElUser(null);
   };
 
   const handleNavigate = (path) => {
-    if (anchorUser) handleCloseUserMenu();
+    if (anchorElUser) handleCloseUserMenu();
     setTimeout(() => {
       navigate(path);
     }, 300);
   };
 
   const handleLogout = () => {
-    if (anchorUser) handleCloseUserMenu();
+    if (anchorElUser) handleCloseUserMenu();
     dispatch(cleanUser());
     navigate("/");
   };
@@ -42,13 +42,13 @@ export const UserMenu = ({ token, userRole }) => {
     <Box sx={{ flexGrow: 0 }}>
       <Tooltip title="Open settings">
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+          <Avatar />
         </IconButton>
       </Tooltip>
       <Menu
         sx={{ mt: "45px" }}
         id="menu-appbar"
-        anchor={anchorUser}
+        anchorEl={anchorElUser}
         anchorOrigin={{
           vertical: "top",
           horizontal: "right",
@@ -58,7 +58,7 @@ export const UserMenu = ({ token, userRole }) => {
           vertical: "top",
           horizontal: "right",
         }}
-        open={Boolean(anchorUser)}
+        open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
         {token && userRole === "admin" && (

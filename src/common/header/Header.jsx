@@ -12,19 +12,19 @@ import { userData } from "../../core/userSlice.js";
 
 export const Header = () => {
   const navigate = useNavigate();
-  const [anchorNav, setAnchorNav] = useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
   const { token, user } = useSelector(userData);
 
   const handleOpenNavMenu = (e) => {
-    setAnchorNav(e.currentTarget);
+    setAnchorElNav(e.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
-    setAnchorNav(null);
+    setAnchorElNav(null);
   };
 
   const handleNavigate = (path) => {
-    if (anchorNav) handleCloseNavMenu();
+    if (anchorElNav) handleCloseNavMenu();
     setTimeout(() => {
       navigate(path);
     }, 300);
@@ -57,7 +57,7 @@ export const Header = () => {
           </Typography>
           <MobileMenu
             token={token}
-            anchorNav={anchorNav}
+            anchorElNav={anchorElNav}
             handleCloseNavMenu={handleCloseNavMenu}
             handleOpenNavMenu={handleOpenNavMenu}
             handleNavigate={handleNavigate}

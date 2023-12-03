@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { LoginForm } from "./components/LoginForm.jsx";
-import { loginUser } from "../../services/apiCalls.js";
+import { loginUser } from "../../services/userApiCalls.js";
 import { setToken, setUser } from "../../core/userSlice.js";
 import { handleNavigate } from "../../common/handleNavigate.js";
 
@@ -41,7 +41,7 @@ export const Login = () => {
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
-          marginTop: 12,
+          marginTop: 10,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",

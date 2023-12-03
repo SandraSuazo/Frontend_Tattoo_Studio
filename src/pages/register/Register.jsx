@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { RegisterForm } from "./components/RegisterForm";
-import { registerUser } from "../../services/apiCalls";
+import { registerUser } from "../../services/userApiCalls";
 import { handleNavigate } from "../../common/handleNavigate";
 
 export const Register = () => {
@@ -38,7 +38,7 @@ export const Register = () => {
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
-          marginTop: 10,
+          marginTop: 8,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",

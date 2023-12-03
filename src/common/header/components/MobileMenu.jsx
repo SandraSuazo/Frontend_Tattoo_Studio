@@ -4,7 +4,7 @@ import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
 
 export const MobileMenu = ({
   token,
-  anchorNav,
+  anchorElNav,
   handleOpenNavMenu,
   handleCloseNavMenu,
   handleNavigate,
@@ -23,7 +23,7 @@ export const MobileMenu = ({
       </IconButton>
       <Menu
         id="menu-appbar"
-        anchor={anchorNav}
+        anchorEl={anchorElNav}
         anchorOrigin={{
           vertical: "bottom",
           horizontal: "left",
@@ -33,7 +33,7 @@ export const MobileMenu = ({
           vertical: "top",
           horizontal: "left",
         }}
-        open={Boolean(anchorNav)}
+        open={Boolean(anchorElNav)}
         onClose={handleCloseNavMenu}
         sx={{
           display: { xs: "block", md: "none" },
