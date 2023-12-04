@@ -1,15 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setAppointments } from "../../core/appointmentSlice.js";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { getAppointments } from "../../services/appointmentApiCalls.js";
 import { useDispatch, useSelector } from "react-redux";
 import { userData } from "../../core/userSlice.js";
 import { appointmentData } from "../../core/appointmentSlice.js";
+import { BasicTable } from "./components/AppointmentTable.jsx";
+import { AppointmentModal } from "./components/AppointmentModal.jsx";
 
 export const Appointments = () => {
   const { token } = useSelector(userData);
   const { appointments } = useSelector(appointmentData);
   const dispatch = useDispatch();
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleOpenModal = () => setModalOpen(true);
+  const handleCloseModal = () => setModalOpen(false);
 
   useEffect(() => {
     const handleAppointmentList = async () => {
@@ -25,20 +30,16 @@ export const Appointments = () => {
 
   return (
     <Box>
-      {token ? (
-        <>
-          {appointments.map((appointment, index) => (
-            <div key={index}>
-              <Typography>{appointment.startTime}</Typography>
-              <Typography>{appointment.endTime}</Typography>
-              <Typography>{appointment.intervention}</Typography>
-              <Typography>{appointment.tattooArtist.name}</Typography>
-            </div>
-          ))}
-        </>
+      <Typography variant="h4" style={{ color: "#ad9859" }}>
+        Citas
+      </Typography>
+      {appointments.length > 0 ? (
+        <BasicTable appointments={appointments} />
       ) : (
-        <Typography variant="h3">No user</Typography>
+        <Typography>No hay citas</Typography>
       )}
+      <Button onClick={handleOpenModal}>Pedir Cita</Button>
+      <AppointmentModal open={modalOpen} handleClose={handleCloseModal} />
     </Box>
   );
 };

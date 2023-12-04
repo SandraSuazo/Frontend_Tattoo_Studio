@@ -17,6 +17,7 @@ export const Register = () => {
       navigate(path);
     }, 300);
   };
+
   const handleUserRegister = async (user) => {
     try {
       await registerUser(user);
