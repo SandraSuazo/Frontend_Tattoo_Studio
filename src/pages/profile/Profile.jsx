@@ -1,24 +1,112 @@
-import { Box, Typography } from "@mui/material";
-import { useSelector } from "react-redux";
-import { userData } from "../../core/userSlice";
+import React, { useState, useEffect } from "react";
+import { Box, Typography, Button, Container } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+import { userData, cleanUser, setUser } from "../../core/userSlice";
+import { deactivateUser, modifyProfileUser } from "../../services/userApiCalls";
+import { handleNavigate } from "../../common/handleNavigate";
+import { toast } from "react-toastify";
+import { EditProfileForm } from "./components/EditProfileForm";
 
-export const Profile = () => {
-  const { token } = useSelector(userData);
-  const { user } = useSelector(userData);
+export const Profile = ({ navigate }) => {
+  const notify = (message) => toast.error(message);
+  const { token, user } = useSelector(userData);
+  const dispatch = useDispatch();
+
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [formData, setFormData] = useState({
+    name: user.name,
+    surname: user.surname,
+    phone: user.phone,
+    email: user.email,
+    password: "",
+  });
+
+  const handleEditButton = () => {
+    setIsEditMode((prevEditMode) => !prevEditMode);
+    if (!isEditMode) {
+      setFormData({
+        name: "",
+        surname: "",
+        phone: "",
+        email: "",
+        password: "",
+      });
+    }
+  };
+
+  const handleEditProfile = async () => {
+    try {
+      const result = await modifyProfileUser(formData, token);
+      dispatch(setUser(result.data.updatedUser));
+      setIsEditMode(false);
+    } catch (error) {
+      notify(`${error.response.status}: ${error.response.data}`);
+    }
+  };
+
+  const handleDeleteProfile = async () => {
+    try {
+      await deactivateUser(user.id, token);
+      dispatch(cleanUser());
+      handleNavigate(navigate, "/");
+    } catch (error) {
+      notify(`${error.response.status}: ${error.response.data}`);
+    }
+  };
 
   return (
-    <Box>
-      {token ? (
-        <>
-          <Typography>Perfil:</Typography>
-          <Typography>{user.name}</Typography>
-          <Typography>{user.surname}</Typography>
-          <Typography>{user.email}</Typography>
-          <Typography>{user.phone}</Typography>
-        </>
-      ) : (
-        <Typography variant="h3">No user</Typography>
-      )}
-    </Box>
+    <Container component="main" maxWidth="xs">
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Typography
+          variant="h4"
+          style={{
+            color: "#ad9859",
+          }}
+        >
+          Perfil
+        </Typography>
+        <Box component="form" noValidate sx={{ mt: 3 }}>
+          <EditProfileForm
+            formData={formData}
+            setFormData={setFormData}
+            isEditMode={isEditMode}
+          />
+        </Box>
+        {!isEditMode ? (
+          <Button
+            fullWidth
+            variant="contained"
+            onClick={handleEditButton}
+            sx={{ mt: 3 }}
+          >
+            Modificar Perfil
+          </Button>
+        ) : (
+          <Button
+            fullWidth
+            variant="contained"
+            onClick={handleEditProfile}
+            sx={{ mt: 3 }}
+          >
+            Guardar Cambios
+          </Button>
+        )}
+        <Button
+          fullWidth
+          variant="contained"
+          onClick={handleDeleteProfile}
+          sx={{ mt: 3 }}
+        >
+          Eliminar Perfil
+        </Button>
+      </Box>
+    </Container>
   );
 };

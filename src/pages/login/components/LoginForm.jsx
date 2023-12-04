@@ -10,6 +10,8 @@ export const LoginForm = () => {
             id: "email",
             type: "email",
             label: "Correo Electrónico",
+            value: EventTarget.value,
+            disabled: "false",
           })}
         </Grid>
         <Grid item xs={12}>
@@ -17,6 +19,8 @@ export const LoginForm = () => {
             id: "password",
             type: "password",
             label: "Contraseña",
+            value: EventTarget.value,
+            disabled: "false",
           })}
         </Grid>
       </Grid>
