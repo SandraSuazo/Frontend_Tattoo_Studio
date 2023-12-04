@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Box, Typography, Button, Container } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { userData, cleanUser, setUser } from "../../core/userSlice";
-import { deactivateUser, modifyProfileUser } from "../../services/userApiCalls";
-import { handleNavigate } from "../../common/handleNavigate";
+import { userData, setUser } from "../../core/userSlice";
+import { modifyProfileUser } from "../../services/userApiCalls";
 import { toast } from "react-toastify";
 import { EditProfileForm } from "./components/EditProfileForm";
 
-export const Profile = ({ navigate }) => {
+export const Profile = () => {
   const notify = (message) => toast.error(message);
   const { token, user } = useSelector(userData);
   const dispatch = useDispatch();
@@ -48,7 +47,7 @@ export const Profile = ({ navigate }) => {
   //   try {
   //     await deactivateUser(user._id, token);
   //     dispatch(cleanUser());
-  //     handleNavigate(navigate, "/");
+  //     handleNavigate("/");
   //   } catch (error) {
   //     notify(`${error.response.status}: ${error.response.data}`);
   //   }

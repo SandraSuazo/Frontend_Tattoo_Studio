@@ -1,54 +1,58 @@
-import { Grid } from "@mui/material";
-import { UserFormFields } from "../../../common/components/FormFields.jsx";
+import { Grid, TextField } from "@mui/material";
 
 export const RegisterForm = () => {
   return (
     <>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
-          {UserFormFields({
-            id: "firstName",
-            type: "text",
-            label: "Nombre",
-            value: EventTarget.value,
-            disabled: "false",
-          })}
+          <TextField
+            required
+            fullWidth
+            id="firstName"
+            name="firstName"
+            type="text"
+            label="Nombre"
+          />
         </Grid>
         <Grid item xs={12} sm={6}>
-          {UserFormFields({
-            id: "lastName",
-            type: "text",
-            label: "Apellido",
-            value: EventTarget.value,
-            disabled: "false",
-          })}
+          <TextField
+            required
+            fullWidth
+            id="lastName"
+            name="lastName"
+            type="text"
+            label="Apellido"
+          />
         </Grid>
         <Grid item xs={12}>
-          {UserFormFields({
-            id: "phone",
-            type: "phone",
-            label: "Teléfono",
-            value: EventTarget.value,
-            disabled: "false",
-          })}
+          <TextField
+            required
+            fullWidth
+            id="phone"
+            name="phone"
+            type="phone"
+            label="Teléfono"
+          />
         </Grid>
         <Grid item xs={12}>
-          {UserFormFields({
-            id: "email",
-            type: "email",
-            label: "Correo Electrónico",
-            value: EventTarget.value,
-            disabled: "false",
-          })}
+          <TextField
+            required
+            fullWidth
+            id="email"
+            name="email"
+            type="email"
+            label="Correo Electrónico"
+          />
         </Grid>
         <Grid item xs={12}>
-          {UserFormFields({
-            id: "password",
-            type: "password",
-            label: "Contraseña",
-            value: EventTarget.value,
-            disabled: "false",
-          })}
+          <TextField
+            required
+            fullWidth
+            id="password"
+            name="password"
+            type="password"
+            label="Contraseña"
+          />
         </Grid>
       </Grid>
     </>

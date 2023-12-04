@@ -7,16 +7,20 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { RegisterForm } from "./components/RegisterForm";
 import { registerUser } from "../../services/userApiCalls";
-import { handleNavigate } from "../../common/handleNavigate";
 
 export const Register = () => {
   const notify = (message) => toast.error(message);
   const navigate = useNavigate();
 
+  const handleNavigate = (path) => {
+    setTimeout(() => {
+      navigate(path);
+    }, 300);
+  };
   const handleUserRegister = async (user) => {
     try {
       await registerUser(user);
-      handleNavigate(navigate, "/login");
+      handleNavigate("/login");
     } catch (error) {
       notify(`${error.response.status}: ${error.response.data}`);
     }
@@ -64,7 +68,7 @@ export const Register = () => {
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Button onClick={() => handleNavigate(navigate, "/login")}>
+              <Button onClick={() => handleNavigate("/login")}>
                 ¿Ya tienes una cuenta? Inicia sesión
               </Button>
             </Grid>

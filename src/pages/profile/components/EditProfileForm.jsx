@@ -1,5 +1,4 @@
-import { Grid } from "@mui/material";
-import { UserFormFields } from "../../../common/components/FormFields";
+import { Grid, TextField } from "@mui/material";
 
 export const EditProfileForm = ({ formData, setFormData, isEditMode }) => {
   const handleChange = (field, value) => {
@@ -12,55 +11,70 @@ export const EditProfileForm = ({ formData, setFormData, isEditMode }) => {
     <>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
-          {UserFormFields({
-            id: "firstName",
-            type: "text",
-            label: "Nombre",
-            value: formData.name,
-            onChange: (value) => handleChange("name", value),
-            disabled: isEditMode,
-          })}
+          <TextField
+            required
+            fullWidth
+            id="firstName"
+            name="firstName"
+            type="text"
+            label="Nombre"
+            value={formData.name}
+            onChange={(e) => handleChange("name", e.target.value)}
+            disabled={!isEditMode}
+          />
         </Grid>
         <Grid item xs={12} sm={6}>
-          {UserFormFields({
-            id: "lastName",
-            type: "text",
-            label: "Apellido",
-            value: formData.surname,
-            onChange: (value) => handleChange("surname", value),
-            disabled: isEditMode,
-          })}
+          <TextField
+            required
+            fullWidth
+            id="lastName"
+            name="lastName"
+            type="text"
+            label="Apellido"
+            value={formData.surname}
+            onChange={(e) => handleChange("surname", e.target.value)}
+            disabled={!isEditMode}
+          />
         </Grid>
         <Grid item xs={12}>
-          {UserFormFields({
-            id: "phone",
-            type: "phone",
-            label: "Teléfono",
-            value: formData.phone,
-            onChange: (value) => handleChange("phone", value),
-            disabled: isEditMode,
-          })}
+          <TextField
+            required
+            fullWidth
+            id="phone"
+            name="phone"
+            type="tel"
+            label="Teléfono"
+            value={formData.phone}
+            onChange={(e) => handleChange("phone", e.target.value)}
+            disabled={!isEditMode}
+          />
         </Grid>
         <Grid item xs={12}>
-          {UserFormFields({
-            id: "email",
-            type: "email",
-            label: "Correo Electrónico",
-            value: formData.email,
-            onChange: (value) => handleChange("email", value),
-            disabled: isEditMode,
-          })}
+          <TextField
+            required
+            fullWidth
+            id="email"
+            name="email"
+            type="email"
+            label="Correo Electrónico"
+            value={formData.email}
+            onChange={(e) => handleChange("email", e.target.value)}
+            disabled={!isEditMode}
+          />
         </Grid>
         {isEditMode && (
           <Grid item xs={12}>
-            {UserFormFields({
-              id: "password",
-              type: "password",
-              label: "Contraseña",
-              value: formData.password,
-              onChange: (value) => handleChange("password", value),
-              disabled: isEditMode,
-            })}
+            <TextField
+              required
+              fullWidth
+              id="password"
+              name="password"
+              type="password"
+              label="Contraseña"
+              value={formData.password}
+              onChange={(e) => handleChange("password", e.target.value)}
+              disabled={!isEditMode}
+            />
           </Grid>
         )}
       </Grid>

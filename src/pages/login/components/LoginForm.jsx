@@ -1,27 +1,28 @@
-import { Grid } from "@mui/material";
-import { UserFormFields } from "../../../common/components/FormFields.jsx";
+import { Grid, TextField } from "@mui/material";
 
 export const LoginForm = () => {
   return (
     <>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          {UserFormFields({
-            id: "email",
-            type: "email",
-            label: "Correo Electrónico",
-            value: EventTarget.value,
-            disabled: "false",
-          })}
+          <TextField
+            required
+            fullWidth
+            id="email"
+            name="email"
+            type="email"
+            label="Correo Electrónico"
+          />
         </Grid>
         <Grid item xs={12}>
-          {UserFormFields({
-            id: "password",
-            type: "password",
-            label: "Contraseña",
-            value: EventTarget.value,
-            disabled: "false",
-          })}
+          <TextField
+            required
+            fullWidth
+            id="password"
+            name="password"
+            type="password"
+            label="Contraseña"
+          />
         </Grid>
       </Grid>
     </>

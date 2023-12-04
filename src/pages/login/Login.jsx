@@ -9,19 +9,24 @@ import { useDispatch } from "react-redux";
 import { LoginForm } from "./components/LoginForm.jsx";
 import { loginUser } from "../../services/userApiCalls.js";
 import { setToken, setUser } from "../../core/userSlice.js";
-import { handleNavigate } from "../../common/handleNavigate.js";
 
 export const Login = () => {
   const notify = (message) => toast.error(message);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const handleNavigate = (path) => {
+    setTimeout(() => {
+      navigate(path);
+    }, 300);
+  };
+
   const handleUserLogin = async (user) => {
     try {
       await loginUser(user).then(({ data }) => {
         dispatch(setUser(data.user));
         dispatch(setToken(data.token));
-        handleNavigate(navigate, "/");
+        handleNavigate("/");
       });
     } catch (error) {
       notify(`${error.response.status}: ${error.response.data}`);
@@ -67,7 +72,7 @@ export const Login = () => {
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Button onClick={() => handleNavigate(navigate, "/register")}>
+              <Button onClick={() => handleNavigate("/register")}>
                 ¿No tienes una cuenta? Regístrate
               </Button>
             </Grid>
