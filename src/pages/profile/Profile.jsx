@@ -44,15 +44,15 @@ export const Profile = ({ navigate }) => {
     }
   };
 
-  const handleDeleteProfile = async () => {
-    try {
-      await deactivateUser(user.id, token);
-      dispatch(cleanUser());
-      handleNavigate(navigate, "/");
-    } catch (error) {
-      notify(`${error.response.status}: ${error.response.data}`);
-    }
-  };
+  // const handleDeleteProfile = async () => {
+  //   try {
+  //     await deactivateUser(user._id, token);
+  //     dispatch(cleanUser());
+  //     handleNavigate(navigate, "/");
+  //   } catch (error) {
+  //     notify(`${error.response.status}: ${error.response.data}`);
+  //   }
+  // };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -98,14 +98,6 @@ export const Profile = ({ navigate }) => {
             Guardar Cambios
           </Button>
         )}
-        <Button
-          fullWidth
-          variant="contained"
-          onClick={handleDeleteProfile}
-          sx={{ mt: 3 }}
-        >
-          Eliminar Perfil
-        </Button>
       </Box>
     </Container>
   );

@@ -36,16 +36,9 @@ export const Header = () => {
         <Toolbar disableGutters>
           <Typography
             onClick={() => handleNavigate("/")}
-            variant="h6"
-            noWrap
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
               cursor: "pointer",
             }}
           >
@@ -58,23 +51,16 @@ export const Header = () => {
           <MobileMenu
             token={token}
             anchorElNav={anchorElNav}
-            handleCloseNavMenu={handleCloseNavMenu}
             handleOpenNavMenu={handleOpenNavMenu}
+            handleCloseNavMenu={handleCloseNavMenu}
             handleNavigate={handleNavigate}
           />
           <Typography
             onClick={() => handleNavigate("/")}
-            variant="h5"
-            noWrap
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
               cursor: "pointer",
             }}
           >

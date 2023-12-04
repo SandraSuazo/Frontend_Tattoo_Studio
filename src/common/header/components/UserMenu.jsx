@@ -40,7 +40,7 @@ export const UserMenu = ({ token, userRole }) => {
 
   return (
     <Box sx={{ flexGrow: 0 }}>
-      <Tooltip title="Open settings">
+      <Tooltip>
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
           <Avatar />
         </IconButton>
@@ -53,7 +53,6 @@ export const UserMenu = ({ token, userRole }) => {
           vertical: "top",
           horizontal: "right",
         }}
-        keepMounted
         transformOrigin={{
           vertical: "top",
           horizontal: "right",

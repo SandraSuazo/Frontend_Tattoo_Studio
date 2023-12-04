@@ -32,7 +32,7 @@ export const Appointments = () => {
               <Typography>{appointment.startTime}</Typography>
               <Typography>{appointment.endTime}</Typography>
               <Typography>{appointment.intervention}</Typography>
-              <Typography>{appointment.tattooArtist}</Typography>
+              <Typography>{appointment.tattooArtist.name}</Typography>
             </div>
           ))}
         </>
