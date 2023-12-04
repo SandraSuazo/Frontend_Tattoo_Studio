@@ -37,7 +37,7 @@ export const Profile = ({ navigate }) => {
   const handleEditProfile = async () => {
     try {
       const result = await modifyProfileUser(formData, token);
-      dispatch(setUser(result.data.updatedUser));
+      dispatch(setUser({ user: result.data.user }));
       setIsEditMode(false);
     } catch (error) {
       notify(`${error.response.status}: ${error.response.data}`);

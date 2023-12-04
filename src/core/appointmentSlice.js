@@ -9,6 +9,9 @@ export const appointmentSlice = createSlice({
     setAppointments: (state, action) => {
       state.appointments = action.payload;
     },
+    cleanAppointments: (state) => {
+      state.appointments = [];
+    },
   },
 });
 
