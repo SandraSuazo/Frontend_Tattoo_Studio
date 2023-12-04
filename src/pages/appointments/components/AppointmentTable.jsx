@@ -7,34 +7,41 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-export const BasicTable = ({ appointments }) => {
+export const AppointmentTable = ({ appointments }) => {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ minWidth: 600 }}>
         <TableHead>
           <TableRow>
-            <TableCell>Fecha</TableCell>
-            <TableCell align="left">Inicio</TableCell>
-            <TableCell align="left">Fin</TableCell>
-            <TableCell align="left">Intervención</TableCell>
-            <TableCell align="left">Tatuador</TableCell>
+            <TableCell sx={{ fontSize: "18px" }} align="center">
+              FECHA
+            </TableCell>
+            <TableCell sx={{ fontSize: "18px" }} align="center">
+              HORA INICIO
+            </TableCell>
+            <TableCell sx={{ fontSize: "18px" }} align="center">
+              HORA FIN
+            </TableCell>
+            <TableCell sx={{ fontSize: "18px" }} align="center">
+              INTERVENCIÓN
+            </TableCell>
+            <TableCell sx={{ fontSize: "18px" }} align="center">
+              TATUADOR
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {appointments.map((appointment) => (
-            <TableRow
-              key={appointment._id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
+            <TableRow key={appointment._id}>
+              <TableCell component="th" scope="row" align="center">
                 {new Date(appointment.date).toLocaleDateString()}
               </TableCell>
-              <TableCell align="left">{appointment.startTime}</TableCell>
-              <TableCell align="left">{appointment.endTime}</TableCell>
-              <TableCell align="left">
+              <TableCell align="center">{appointment.startTime}</TableCell>
+              <TableCell align="center">{appointment.endTime}</TableCell>
+              <TableCell align="center">
                 {appointment.intervention === "tattoo" ? "Tatuaje" : "Piercing"}
               </TableCell>
-              <TableCell align="left">{`${appointment.tattooArtist.name} ${appointment.tattooArtist.surname}`}</TableCell>
+              <TableCell align="center">{`${appointment.tattooArtist.name} ${appointment.tattooArtist.surname}`}</TableCell>
             </TableRow>
           ))}
         </TableBody>
