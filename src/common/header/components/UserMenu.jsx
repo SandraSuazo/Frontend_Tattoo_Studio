@@ -11,6 +11,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { cleanUser } from "../../../core/userSlice.js";
+import { cleanAppointments } from "../../../core/appointmentSlice.js";
 
 export const UserMenu = ({ token, userRole }) => {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ export const UserMenu = ({ token, userRole }) => {
   const handleLogout = () => {
     if (anchorElUser) handleCloseUserMenu();
     dispatch(cleanUser());
+    dispatch(cleanAppointments());
     navigate("/");
   };
 

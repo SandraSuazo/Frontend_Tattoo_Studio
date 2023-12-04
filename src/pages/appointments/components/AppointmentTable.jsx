@@ -17,6 +17,7 @@ export const BasicTable = ({ appointments }) => {
             <TableCell align="left">Inicio</TableCell>
             <TableCell align="left">Fin</TableCell>
             <TableCell align="left">Intervención</TableCell>
+            <TableCell align="left">Tatuador</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -33,6 +34,7 @@ export const BasicTable = ({ appointments }) => {
               <TableCell align="left">
                 {appointment.intervention === "tattoo" ? "Tatuaje" : "Piercing"}
               </TableCell>
+              <TableCell align="left">{`${appointment.tattooArtist.name} ${appointment.tattooArtist.surname}`}</TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -7,8 +7,10 @@ import { userData } from "../../core/userSlice.js";
 import { appointmentData } from "../../core/appointmentSlice.js";
 import { BasicTable } from "./components/AppointmentTable.jsx";
 import { AppointmentModal } from "./components/AppointmentModal.jsx";
+import { toast } from "react-toastify";
 
 export const Appointments = () => {
+  const notify = (message) => toast.error(message);
   const { token } = useSelector(userData);
   const { appointments } = useSelector(appointmentData);
   const dispatch = useDispatch();
@@ -25,6 +27,7 @@ export const Appointments = () => {
         notify(`${error.response.status}: ${error.response.data}`);
       }
     };
+
     handleAppointmentList();
   }, [dispatch, token]);
 
