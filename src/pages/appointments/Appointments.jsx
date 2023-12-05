@@ -18,20 +18,21 @@ export const Appointments = () => {
 
   const handleOpenModal = () => setModalOpen(true);
 
-  const handleCloseModal = () => setModalOpen(false);
+  const handleCloseModal = () => {
+    setModalOpen(false), handleAppointmentList();
+  };
 
+  const handleAppointmentList = async () => {
+    try {
+      const result = await getAppointments(token);
+      dispatch(setAppointments(result));
+    } catch (error) {
+      notify(`${error.response.status}: ${error.response.data}`);
+    }
+  };
   useEffect(() => {
-    const handleAppointmentList = async () => {
-      try {
-        const result = await getAppointments(token);
-        dispatch(setAppointments(result));
-      } catch (error) {
-        notify(`${error.response.status}: ${error.response.data}`);
-      }
-    };
-
     handleAppointmentList();
-  }, [dispatch, token]);
+  }, [appointments]);
 
   return (
     <Container component="main" maxWidth="s">

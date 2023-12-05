@@ -19,3 +19,25 @@ export const getAppointments = async (token) => {
   });
   return result.data;
 };
+
+export const updateAppointment = async (sessionId, updatedData, token) => {
+  const result = await axios.patch(
+    `${appointmentURL}/update-session/${sessionId}`,
+    updatedData,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  return result.data;
+};
+
+export const deleteSession = async (sessionId, token) => {
+  const result = await axios.delete(`${appointmentURL}/delete/${sessionId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return result.data;
+};

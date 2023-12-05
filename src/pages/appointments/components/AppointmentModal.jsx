@@ -4,7 +4,10 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { createAppointment } from "../../../services/appointmentApiCalls.js";
+import {
+  createAppointment,
+  getAppointments,
+} from "../../../services/appointmentApiCalls.js";
 import { setAppointments } from "../../../core/appointmentSlice.js";
 import { userData } from "../../../core/userSlice.js";
 import { toast } from "react-toastify";
@@ -34,14 +37,19 @@ export const AppointmentModal = ({ open, handleClose }) => {
     tattooArtist: "",
   });
 
-  const handleCreateAppointment = async () => {
-    try {
-      const result = await createAppointment(formData, token);
-      dispatch(setAppointments(result));
-      handleClose();
-    } catch (error) {
-      notify(`${error.response.status}: ${error.response.data}`);
-    }
+  const handleCreateAppointment = () => {
+    createAppointment(formData, token)
+      .then(
+        getAppointments(token)
+          .then((a) => dispatch(setAppointments(a)))
+          .catch((error) =>
+            notify(`${error.response.status}: ${error.response.data}`)
+          )
+      )
+      .catch((error) =>
+        notify(`${error.response.status}: ${error.response.data}`)
+      );
+    handleClose();
   };
 
   return (
