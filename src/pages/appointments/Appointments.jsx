@@ -22,16 +22,14 @@ export const Appointments = () => {
     setModalOpen(false), handleAppointmentList();
   };
 
-  const handleAppointmentList = async () => {
-    try {
-      getAppointments(token)
-        .then((a) => {
-          dispatch(setAppointments(a));
-        })
-        .catch((e) => console.log(e));
-    } catch (error) {
-      notify(`${error.response.status}: ${error.response.data}`);
-    }
+  const handleAppointmentList = () => {
+    getAppointments(token)
+      .then((appointments) => {
+        dispatch(setAppointments(appointments));
+      })
+      .catch((error) =>
+        notify(`${error.response.status}: ${error.response.data}`)
+      );
   };
 
   useEffect(() => {
@@ -56,7 +54,11 @@ export const Appointments = () => {
         </Button>
       </Box>
       <AppointmentTable appointments={appointments} />
-      <AppointmentModal open={modalOpen} handleClose={handleCloseModal} />
+      <AppointmentModal
+        open={modalOpen}
+        handleClose={handleCloseModal}
+        isCreating={true}
+      />
     </Container>
   );
 };

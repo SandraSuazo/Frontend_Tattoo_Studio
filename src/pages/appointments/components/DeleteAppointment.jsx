@@ -18,8 +18,8 @@ export const DeleteAppointment = ({ appointmentId }) => {
   const handleDeleteAppointment = async () => {
     try {
       await deleteSession(appointmentId, token);
-      const updatedAppointments = await getAppointments(token);
-      dispatch(setAppointments(updatedAppointments));
+      const appointmentList = await getAppointments(token);
+      dispatch(setAppointments(appointmentList));
     } catch (error) {
       notify(`${error.response.status}: ${error.response.data}`);
     }

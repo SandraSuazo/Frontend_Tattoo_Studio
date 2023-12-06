@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
@@ -6,7 +6,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { Grid } from "@mui/material";
 
-export const AppointmentForm = ({ formData, setFormData }) => {
+export const AppointmentForm = ({ formData, setFormData, isCreating }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -14,6 +14,12 @@ export const AppointmentForm = ({ formData, setFormData }) => {
       [name]: value,
     }));
   };
+
+  useEffect(() => {
+    if (!isCreating) {
+      setFormData(formData);
+    }
+  }, [isCreating, formData]);
 
   return (
     <>
