@@ -1,3 +1,5 @@
+import { TattooArtistCard } from "./components/TattooArtistCard";
+
 export const TattooArtists = () => {
-  return <div>TattooArtists</div>;
+  return <TattooArtistCard />;
 };

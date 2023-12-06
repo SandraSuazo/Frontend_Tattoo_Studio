@@ -21,7 +21,7 @@ export const DeleteAppointment = ({ appointmentId }) => {
       const updatedAppointments = await getAppointments(token);
       dispatch(setAppointments(updatedAppointments));
     } catch (error) {
-      notify(`${error?.response?.status}: ${error?.response?.data}`);
+      notify(`${error.response.status}: ${error.response.data}`);
     }
   };
 

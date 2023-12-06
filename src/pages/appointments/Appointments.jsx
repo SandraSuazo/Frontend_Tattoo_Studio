@@ -24,8 +24,11 @@ export const Appointments = () => {
 
   const handleAppointmentList = async () => {
     try {
-      const result = await getAppointments(token);
-      dispatch(setAppointments(result));
+      getAppointments(token)
+        .then((a) => {
+          dispatch(setAppointments(a));
+        })
+        .catch((e) => console.log(e));
     } catch (error) {
       notify(`${error.response.status}: ${error.response.data}`);
     }
@@ -52,11 +55,7 @@ export const Appointments = () => {
           Pedir Cita
         </Button>
       </Box>
-      {appointments.length > 0 ? (
-        <AppointmentTable appointments={appointments} />
-      ) : (
-        <Typography>No hay citas</Typography>
-      )}
+      <AppointmentTable appointments={appointments} />
       <AppointmentModal open={modalOpen} handleClose={handleCloseModal} />
     </Container>
   );

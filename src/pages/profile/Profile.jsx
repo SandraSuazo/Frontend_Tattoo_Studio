@@ -43,16 +43,6 @@ export const Profile = () => {
     }
   };
 
-  // const handleDeleteProfile = async () => {
-  //   try {
-  //     await deactivateUser(user._id, token);
-  //     dispatch(cleanUser());
-  //     handleNavigate("/");
-  //   } catch (error) {
-  //     notify(`${error.response.status}: ${error.response.data}`);
-  //   }
-  // };
-
   return (
     <Container component="main" maxWidth="xs">
       <Box

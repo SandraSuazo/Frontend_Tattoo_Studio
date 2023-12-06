@@ -3,12 +3,8 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  createAppointment,
-  getAppointments,
-} from "../../../services/appointmentApiCalls.js";
-import { setAppointments } from "../../../core/appointmentSlice.js";
+import { useSelector } from "react-redux";
+import { createAppointment } from "../../../services/appointmentApiCalls.js";
 import { userData } from "../../../core/userSlice.js";
 import { toast } from "react-toastify";
 import { AppointmentForm } from "./AppointmentForm.jsx";
@@ -27,7 +23,6 @@ const style = {
 
 export const AppointmentModal = ({ open, handleClose }) => {
   const notify = (message) => toast.error(message);
-  const dispatch = useDispatch();
   const { token } = useSelector(userData);
   const [formData, setFormData] = useState({
     date: "",
@@ -39,17 +34,10 @@ export const AppointmentModal = ({ open, handleClose }) => {
 
   const handleCreateAppointment = () => {
     createAppointment(formData, token)
-      .then(
-        getAppointments(token)
-          .then((a) => dispatch(setAppointments(a)))
-          .catch((error) =>
-            notify(`${error.response.status}: ${error.response.data}`)
-          )
-      )
+      .then(handleClose())
       .catch((error) =>
         notify(`${error.response.status}: ${error.response.data}`)
       );
-    handleClose();
   };
 
   return (
