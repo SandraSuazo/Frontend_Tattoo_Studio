@@ -6,8 +6,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import { DeleteAppointment } from "./DeleteAppointment";
 
 export const AppointmentTable = ({ appointments }) => {
   return (
@@ -47,7 +47,10 @@ export const AppointmentTable = ({ appointments }) => {
               <TableCell align="center">{`${appointment.tattooArtist.name} ${appointment.tattooArtist.surname}`}</TableCell>
               <TableCell align="center">
                 <EditIcon sx={{ marginRight: 1, cursor: "pointer" }} />
-                <DeleteIcon sx={{ marginLeft: 1, cursor: "pointer" }} />
+                <DeleteAppointment
+                  sx={{ marginLeft: 1, cursor: "pointer" }}
+                  appointmentId={appointment._id}
+                />
               </TableCell>
             </TableRow>
           ))}

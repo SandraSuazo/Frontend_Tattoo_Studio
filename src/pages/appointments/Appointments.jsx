@@ -30,6 +30,7 @@ export const Appointments = () => {
       notify(`${error.response.status}: ${error.response.data}`);
     }
   };
+
   useEffect(() => {
     handleAppointmentList();
   }, [appointments]);
