@@ -1,6 +1,5 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { toast } from "react-toastify";
@@ -9,7 +8,6 @@ import { useDispatch } from "react-redux";
 import { LoginForm } from "./components/LoginForm.jsx";
 import { loginUser } from "../../services/userApiCalls.js";
 import { setToken, setUser } from "../../core/userSlice.js";
-import { ImageList } from "@mui/material";
 
 export const Login = () => {
   const notify = (message) => toast.error(message);
