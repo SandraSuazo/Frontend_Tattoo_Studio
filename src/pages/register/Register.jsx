@@ -40,10 +40,35 @@ export const Register = () => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <Box
+    <Grid container style={{ overflow: "hidden" }}>
+      <Grid item xs={12} sm={6}>
+        <Box
+          style={{
+            width: "auto",
+            height: "90vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <img
+            style={{
+              height: "100%",
+              width: "100%",
+              objectFit: "cover",
+            }}
+            src="src/assets/tattoo_studio/TattooStudioLogin.png"
+            alt="Tattoo Studio"
+          />
+        </Box>
+      </Grid>
+      <Grid
+        item
+        xs={12}
+        sm={4}
         sx={{
-          my: 8,
+          my: 16,
+          mx: "auto",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -75,7 +100,7 @@ export const Register = () => {
             </Grid>
           </Grid>
         </Box>
-      </Box>
-    </Container>
+      </Grid>
+    </Grid>
   );
 };

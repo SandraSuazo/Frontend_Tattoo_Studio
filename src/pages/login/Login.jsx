@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { LoginForm } from "./components/LoginForm.jsx";
 import { loginUser } from "../../services/userApiCalls.js";
 import { setToken, setUser } from "../../core/userSlice.js";
+import { ImageList } from "@mui/material";
 
 export const Login = () => {
   const notify = (message) => toast.error(message);
@@ -43,10 +44,35 @@ export const Login = () => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <Box
+    <Grid container style={{ overflow: "hidden" }}>
+      <Grid item xs={12} sm={6}>
+        <Box
+          style={{
+            width: "auto",
+            height: "90vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <img
+            style={{
+              height: "100%",
+              width: "100%",
+              objectFit: "cover",
+            }}
+            src="src/assets/tattoo_studio/TattooStudioLogin.png"
+            alt="Tattoo Studio"
+          />
+        </Box>
+      </Grid>
+      <Grid
+        item
+        xs={12}
+        sm={6}
         sx={{
-          marginTop: 10,
+          my: 20,
+          mx: "auto",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -78,7 +104,7 @@ export const Login = () => {
             </Grid>
           </Grid>
         </Box>
-      </Box>
-    </Container>
+      </Grid>
+    </Grid>
   );
 };
