@@ -64,7 +64,7 @@ export const UserMenu = ({ token, userRole }) => {
       >
         {token && userRole === "admin" && (
           <MenuItem onClick={() => handleNavigate("/admin")}>
-            <Typography textAlign="center">Admin</Typography>
+            <Typography textAlign="center">Usuarios</Typography>
           </MenuItem>
         )}
         {token ? (

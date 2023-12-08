@@ -8,11 +8,12 @@ import { appointmentData } from "../../core/appointmentSlice.js";
 import { AppointmentTable } from "./components/AppointmentTable.jsx";
 import { AppointmentModal } from "./components/AppointmentModal.jsx";
 import { toast } from "react-toastify";
+import { AppointmentAdminTable } from "../admin/components/AppointmentAdminTable.jsx";
 
 export const Appointments = () => {
   const notify = (message) => toast.error(message);
   const dispatch = useDispatch();
-  const { token } = useSelector(userData);
+  const { token, user } = useSelector(userData);
   const { appointments } = useSelector(appointmentData);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -37,28 +38,48 @@ export const Appointments = () => {
   }, [appointments]);
 
   return (
-    <Container component="main" maxWidth="s">
-      <Box
-        sx={{
-          mx: 4,
-          my: 2,
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <Typography variant="h4" style={{ color: "#ad9859" }}>
-          Citas
-        </Typography>
-        <Button variant="contained" type="submit" onClick={handleOpenModal}>
-          Pedir Cita
-        </Button>
-      </Box>
-      <AppointmentTable appointments={appointments} />
-      <AppointmentModal
-        open={modalOpen}
-        handleClose={handleCloseModal}
-        isCreating={true}
-      />
-    </Container>
+    <>
+      {token && user.role === "admin" ? (
+        <Container component="main" maxWidth="s">
+          <Box
+            sx={{
+              mx: 4,
+              my: 2,
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            <Typography variant="h4" style={{ color: "#ad9859" }}>
+              Citas
+            </Typography>
+          </Box>
+          <AppointmentAdminTable />
+        </Container>
+      ) : (
+        <Container component="main" maxWidth="s">
+          <Box
+            sx={{
+              mx: 4,
+              my: 2,
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            <Typography variant="h4" style={{ color: "#ad9859" }}>
+              Citas
+            </Typography>
+            <Button variant="contained" type="submit" onClick={handleOpenModal}>
+              Pedir Cita
+            </Button>
+          </Box>
+          <AppointmentTable appointments={appointments} />
+          <AppointmentModal
+            open={modalOpen}
+            handleClose={handleCloseModal}
+            isCreating={true}
+          />
+        </Container>
+      )}
+    </>
   );
 };

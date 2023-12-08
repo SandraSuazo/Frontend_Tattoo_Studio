@@ -21,11 +21,20 @@ export const modifyProfileUser = async (updatedData, token) => {
   return result;
 };
 
-export const deactivateUser = async (userId, token) => {
+export const deleteUser = async (userId, token) => {
   const result = await axios.delete(`${userURL}/deactivate/${userId}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
   return result;
+};
+
+export const getUsersByRole = async (role, token) => {
+  const result = await axios.get(`${userURL}/list/${role}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return result.data;
 };
