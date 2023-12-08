@@ -50,6 +50,7 @@ export const Header = () => {
           </Typography>
           <MobileMenu
             token={token}
+            userRole={user && user.role}
             anchorElNav={anchorElNav}
             handleOpenNavMenu={handleOpenNavMenu}
             handleCloseNavMenu={handleCloseNavMenu}
@@ -70,7 +71,11 @@ export const Header = () => {
               style={{ width: 60, height: 60 }}
             />
           </Typography>
-          <DesktopMenu token={token} handleNavigate={handleNavigate} />
+          <DesktopMenu
+            token={token}
+            handleNavigate={handleNavigate}
+            userRole={user && user.role}
+          />
           <UserMenu token={token} userRole={user && user.role} />
         </Toolbar>
       </Container>

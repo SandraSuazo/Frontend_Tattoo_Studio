@@ -20,6 +20,15 @@ export const getAppointments = async (token) => {
   return result.data;
 };
 
+export const getAllAppointment = async (token) => {
+  const response = await axios.get(`${appointmentURL}/list-all-sessions`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response.data;
+};
+
 export const updateAppointment = async (sessionId, updatedData, token) => {
   const result = await axios.patch(
     `${appointmentURL}/update-session/${sessionId}`,

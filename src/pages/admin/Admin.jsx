@@ -53,6 +53,7 @@ export const Admin = () => {
         <FormControl>
           <InputLabel id="role-select-label">Rol</InputLabel>
           <Select
+            sx={{ minWidth: "10em" }}
             id="role-select"
             value={selectedRole}
             label="Rol"

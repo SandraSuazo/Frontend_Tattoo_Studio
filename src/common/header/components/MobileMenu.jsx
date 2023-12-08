@@ -4,6 +4,7 @@ import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
 
 export const MobileMenu = ({
   token,
+  userRole,
   anchorElNav,
   handleOpenNavMenu,
   handleCloseNavMenu,
@@ -31,8 +32,13 @@ export const MobileMenu = ({
           display: { xs: "block", md: "none" },
         }}
       >
-        {token && (
+        {token && userRole !== "admin" && (
           <MenuItem onClick={() => handleNavigate("/appointments")}>
+            <Typography textAlign="center">Citas</Typography>
+          </MenuItem>
+        )}
+        {token && userRole === "admin" && (
+          <MenuItem onClick={() => handleNavigate("/admin/appointments")}>
             <Typography textAlign="center">Citas</Typography>
           </MenuItem>
         )}

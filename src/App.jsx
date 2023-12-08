@@ -1,4 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Header } from "./common/header/Header.jsx";
 import { Home } from "../src/pages/home/Home.jsx";
 import { TattooArtists } from "./pages/tattooArtists/TattooArtists.jsx";
 import { Login } from "../src/pages/login/Login.jsx";
@@ -6,7 +7,7 @@ import { Register } from "./pages/register/Register.jsx";
 import { Profile } from "../src/pages/profile/Profile.jsx";
 import { Appointments } from "../src/pages/appointments/Appointments.jsx";
 import { Admin } from "../src/pages/admin/Admin.jsx";
-import { Header } from "./common/header/Header.jsx";
+import { AdminAppointments } from "./pages/admin/AdminAppointments.jsx";
 
 const App = () => {
   return (
@@ -21,7 +22,8 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/appointments" element={<Appointments />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/users" element={<Admin />} />
+          <Route path="/admin/appointments" element={<AdminAppointments />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -63,7 +63,7 @@ export const UserMenu = ({ token, userRole }) => {
         onClose={handleCloseUserMenu}
       >
         {token && userRole === "admin" && (
-          <MenuItem onClick={() => handleNavigate("/admin")}>
+          <MenuItem onClick={() => handleNavigate("/admin/users")}>
             <Typography textAlign="center">Usuarios</Typography>
           </MenuItem>
         )}

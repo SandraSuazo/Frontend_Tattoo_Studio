@@ -13,6 +13,7 @@ import { deleteUser } from "../../../services/userApiCalls";
 
 export const UserAdminTable = ({ users, setUsers, token }) => {
   const notify = (message) => toast.error(message);
+
   const handleDeleteUser = (userId) => {
     deleteUser(userId, token)
       .then(() => {
