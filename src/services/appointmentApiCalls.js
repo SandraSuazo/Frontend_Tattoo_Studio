@@ -21,12 +21,12 @@ export const getAppointments = async (token) => {
 };
 
 export const getAllAppointment = async (token) => {
-  const response = await axios.get(`${appointmentURL}/list-all-sessions`, {
+  const result = await axios.get(`${appointmentURL}/list-all-appointments`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
-  return response.data;
+  return result.data;
 };
 
 export const updateAppointment = async (sessionId, updatedData, token) => {
