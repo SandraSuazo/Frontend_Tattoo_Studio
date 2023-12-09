@@ -46,14 +46,22 @@ export const AppointmentTable = ({ appointments }) => {
               </TableCell>
               <TableCell align="center">{`${appointment.tattooArtist.name} ${appointment.tattooArtist.surname}`}</TableCell>
               <TableCell align="center">
-                <ModifyAppointment
-                  sx={{ marginRight: 1, cursor: "pointer" }}
-                  appointmentId={appointment._id}
-                />
-                <DeleteAppointment
-                  sx={{ marginLeft: 1, cursor: "pointer" }}
-                  appointmentId={appointment._id}
-                />
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <ModifyAppointment
+                    sx={{ cursor: "pointer" }}
+                    appointmentId={appointment._id}
+                  />
+                  <DeleteAppointment
+                    sx={{ cursor: "pointer" }}
+                    appointmentId={appointment._id}
+                  />
+                </div>
               </TableCell>
             </TableRow>
           ))}

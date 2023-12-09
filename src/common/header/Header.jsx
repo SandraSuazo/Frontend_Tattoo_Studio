@@ -43,14 +43,14 @@ export const Header = () => {
             }}
           >
             <img
-              src="src/assets/tattoo_logo/Logo_Studio_Tattoo.png"
+              src="/src/assets/tattoo_logo/Logo_Studio_Tattoo.png"
               alt="Logo"
               style={{ width: 60, height: 60 }}
             />
           </Typography>
           <MobileMenu
             token={token}
-            userRole={user && user.role}
+            userRole={user.role}
             anchorElNav={anchorElNav}
             handleOpenNavMenu={handleOpenNavMenu}
             handleCloseNavMenu={handleCloseNavMenu}
@@ -66,7 +66,7 @@ export const Header = () => {
             }}
           >
             <img
-              src="src/assets/tattoo_logo/Logo_Studio_Tattoo.png"
+              src="/src/assets/tattoo_logo/Logo_Studio_Tattoo.png"
               alt="Logo"
               style={{ width: 60, height: 60 }}
             />
@@ -74,9 +74,9 @@ export const Header = () => {
           <DesktopMenu
             token={token}
             handleNavigate={handleNavigate}
-            userRole={user && user.role}
+            userRole={user.role}
           />
-          <UserMenu token={token} userRole={user && user.role} />
+          <UserMenu token={token} userRole={user.role} />
         </Toolbar>
       </Container>
     </AppBar>

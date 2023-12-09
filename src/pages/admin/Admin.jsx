@@ -44,7 +44,7 @@ export const Admin = () => {
           mx: 4,
           my: 2,
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "space-around",
         }}
       >
         <Typography variant="h4" style={{ color: "#ad9859" }}>

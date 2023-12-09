@@ -54,7 +54,7 @@ export const UserAdminTable = ({ users, setUsers, token }) => {
               <TableCell align="center">{user.surname}</TableCell>
               <TableCell align="center">{user.phone}</TableCell>
               <TableCell align="center">{user.email}</TableCell>
-              <TableCell align="center">
+              <TableCell>
                 <IconButton
                   color="inherit"
                   onClick={() => handleDeleteUser(user._id)}

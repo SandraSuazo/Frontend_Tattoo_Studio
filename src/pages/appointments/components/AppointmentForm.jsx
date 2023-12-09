@@ -19,7 +19,7 @@ export const AppointmentForm = ({ formData, setFormData, isCreating }) => {
     if (!isCreating) {
       setFormData(formData);
     }
-  }, [isCreating, formData]);
+  }, [isCreating]);
 
   return (
     <>
