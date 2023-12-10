@@ -20,10 +20,14 @@ export const getAppointments = async (token) => {
   return result.data;
 };
 
-export const getAllAppointment = async (token) => {
+export const getAllAppointment = async (token, page, pageSize) => {
   const result = await axios.get(`${appointmentURL}/list-all-appointments`, {
     headers: {
       Authorization: `Bearer ${token}`,
+    },
+    params: {
+      page,
+      pageSize,
     },
   });
   return result.data;

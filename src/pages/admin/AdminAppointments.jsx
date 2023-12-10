@@ -1,28 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { Box, Container, Pagination, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { AppointmentAdminTable } from "./components/AppointmentAdminTable";
 import { getAllAppointment } from "../../services/appointmentApiCalls";
 import { useSelector } from "react-redux";
 import { userData } from "../../core/userSlice";
 import { toast } from "react-toastify";
+import { CustomPagination } from "../../common/Pagination";
 
 export const AdminAppointments = () => {
   const notify = (message) => toast.error(message);
   const { token } = useSelector(userData);
   const [appointments, setAppointments] = useState([]);
+  const [page, setPage] = useState(1);
+  const pageSize = 10;
 
   const fetchAppointments = async () => {
     try {
-      const allAppointments = await getAllAppointment(token);
+      const allAppointments = await getAllAppointment(token, page, pageSize);
       setAppointments(allAppointments);
     } catch (error) {
       notify(`${error.response.status}: ${error.response.data}`);
     }
   };
 
+  const handlePageChange = (e, newPage) => {
+    setPage(newPage);
+  };
+
   useEffect(() => {
     fetchAppointments();
-  }, []);
+  }, [page]);
 
   return (
     <>
@@ -38,7 +45,7 @@ export const AdminAppointments = () => {
           Citas
         </Typography>
         <AppointmentAdminTable appointments={appointments} />
-        <Pagination />
+        <CustomPagination count={4} page={page} onChange={handlePageChange} />
       </Container>
     </>
   );
