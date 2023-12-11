@@ -7,6 +7,7 @@ export const EditProfileForm = ({ formData, setFormData, isEditMode }) => {
       [field]: value,
     }));
   };
+
   return (
     <>
       <Grid container spacing={2}>
