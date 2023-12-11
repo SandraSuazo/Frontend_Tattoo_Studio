@@ -33,9 +33,9 @@ export const TattooArtists = () => {
     {
       image: "src/assets/tattoo_artist/Artist_Mute.png",
       name: "Mute",
-      surname: "Acosta",
-      phone: "637972522",
-      email: "mute.acosta@example.com",
+      surname: "Simpson",
+      phone: "659345234",
+      email: "mute.simpson@example.com",
     },
   ];
   return <TattooArtistCard tattooArtistsData={tattooArtistsData} />;

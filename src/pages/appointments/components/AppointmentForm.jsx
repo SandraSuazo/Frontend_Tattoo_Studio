@@ -94,7 +94,7 @@ export const AppointmentForm = ({ formData, setFormData, isCreating }) => {
                 Debora Sanchez
               </MenuItem>
               <MenuItem value="656785e43077201729c16400">John Smith</MenuItem>
-              <MenuItem value="6567865a3077201729c16403">Mute Acosta</MenuItem>
+              <MenuItem value="6567865a3077201729c16403">Mute Simpson</MenuItem>
             </Select>
           </FormControl>
         </Grid>
