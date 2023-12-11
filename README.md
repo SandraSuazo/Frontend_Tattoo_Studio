@@ -1,16 +1,12 @@
 # Ink Addict Tattoo Studio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
+![Logo Tattoo Studio](/src/assets/tattoo_logo/Logo_Studio_Tattoo.png)
 
 ## Índice
 
 - [Tecnologías](#tectonogías)
 - [Instalación](#instalación)
-- [Estructura del Proyecto](#estructura-del-proyecto)
 - [Características](#características)
-- [Licencia](#licencia)
 - [Contacto](#contacto)
 
 ## Tecnologías Utilizadas
@@ -52,4 +48,26 @@ Para instalar y ejecutar este proyecto en tu entorno local, sigue estos pasos:
 
 Ahora deberías tener la aplicación instalada y ejecutándose localmente en tu máquina.
 
-## Estructura del Proyecto
+## Características
+
+1. **Home:** En inicio de este proyecto encontrarás un carousel con imagenes del estudio de tatauajes:
+
+![Carousel](/src/assets/readme/readme01.png)
+
+2. **Tatuadores:** En la barra de navegación tendrás acceso a página informativa de los tatuadores:
+
+![Tatuadores](/src/assets/readme/readme02.png)
+![Tatuadores](/src/assets/readme/readme03.png)
+
+3. **Gestión de Usuarios:** Los usuarios se podrán registrar y loguear en este proyecto, además de ver y modificar su perfil.
+
+4. **Gestión de Citas:** Cada usuario podrás pedir cita, eligiendo tatuador. Dichas citas se listan en una tabla en las que podrás modificar el dato que necesites.
+
+5. **Administrador:** El usuario con rol de Administrador tendrá acceso a una lista de usuarios donde podrá filtrar por rol, al igual que podrá eliminar el usuario que considere. Si esto sucede las citas relacionadas con este usuario tambien serán eliminadas.
+   En cuanto a las citas, podrá listar todas las citas divididas por páginas y eliminar la que quiera.
+
+## Contacto
+
+- Dirección: Edificio Talent Garden. Calle de Juan de Marina 15, Madrid.
+- Teléfono: +34 664 472 083
+- Linkedin: https://www.linkedin.com/in/sandra-suazo/
